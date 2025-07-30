@@ -1,0 +1,8 @@
+.footer-container {
+  display: grid;
+  grid-template-columns: 5fr 5fr;
+}
+
+input::placeholder {
+  padding-left: 10px;
+}
