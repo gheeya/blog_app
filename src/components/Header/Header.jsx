@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Logo } from "../index";
 import { useSelector } from "react-redux";
+import { Button } from "../index";
 
 function Header() {
   const navigate = useNavigate();
@@ -57,7 +58,9 @@ function Header() {
           })}
         </ul>
       </div>
-      <div>Logout Button</div>
+      <div>
+        <Button />
+      </div>
     </nav>
   );
 }
