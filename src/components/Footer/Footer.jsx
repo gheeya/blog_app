@@ -25,12 +25,12 @@ function Footer() {
           </li>
           <li
             className={
-              authStatus
+              !authStatus
                 ? `text-gray-500 px-2 mx-2 py-1`
                 : `transition-colors duration-300 ease-in-out hover:text-orange-700 cursor-default px-2 mx-2 py-1`
             }
           >
-            {authStatus ? (
+            {!authStatus ? (
               <span className="cursor-not-allowed">All Posts</span>
             ) : (
               <Link to="/all-posts">All Posts</Link>
@@ -57,7 +57,7 @@ function Footer() {
             }
           >
             {authStatus ? (
-              <span className="cursor-not-allowed">Signup</span>
+              <span className="cursor-not-allowed">New Here? Join Us....</span>
             ) : (
               <Link to="/signup">New Here? Join Us....</Link>
             )}
