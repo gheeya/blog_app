@@ -6,7 +6,6 @@ import { Button, Logo, Logout } from "../index";
 function Header() {
   const navigate = useNavigate();
   const authStatus = useSelector((state) => state.auth.status);
-  console.log(authStatus);
 
   const navItems = [
     {
@@ -20,8 +19,8 @@ function Header() {
       active: authStatus,
     },
     {
-      name: "Add Posts",
-      url: "/add-posts",
+      name: "Add Post",
+      url: "/add-post",
       active: authStatus,
     },
     {

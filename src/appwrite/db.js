@@ -33,6 +33,7 @@ class DbServices {
         slug,
         {
           title,
+          slug,
           content,
           featuredImage,
           status,

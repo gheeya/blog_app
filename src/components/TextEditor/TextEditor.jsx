@@ -1,25 +1,29 @@
 import React, { useId } from "react";
 import { Controller } from "react-hook-form";
 import { Editor } from "@tinymce/tinymce-react";
-import config from "../../config";
+import config from "../../config/config";
 
 function TextEditor({ name = "content", control, defaultValue = "", label }) {
   const id = useId();
   return (
     <>
-      {label && <label htmlFor={id}>{label}</label>}
+      {label && (
+        <label className="mr-2 text-md font-[500] ml-5" htmlFor={id}>
+          {label}
+        </label>
+      )}
       <Controller
         name={name}
         defaultValue={defaultValue}
         control={control}
         id={id}
-        render={({ field: onChange }) => {
+        render={({ field: { onChange } }) => (
           <Editor
             initialValue={defaultValue}
             apiKey={config.tinyMceApiKey}
             init={{
               initialValue: defaultValue,
-              height: 500,
+              height: 270,
               menubar: true,
               plugins: [
                 "image",
@@ -51,8 +55,8 @@ function TextEditor({ name = "content", control, defaultValue = "", label }) {
             onEditorChange={(content) => {
               onChange(content);
             }}
-          />;
-        }}
+          />
+        )}
       />
     </>
   );
