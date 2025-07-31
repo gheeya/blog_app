@@ -1,7 +1,12 @@
 import React from "react";
+import { Login as LoginComponent } from "../components/index";
 
 function Login() {
-  return <div>This is the Login Page</div>;
+  return (
+    <div>
+      <LoginComponent />
+    </div>
+  );
 }
 
 export default Login;
