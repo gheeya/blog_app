@@ -73,7 +73,7 @@ function Login() {
               type="submit"
               className="mt-2 bg-black rounded-lg px-40 py-2 text-white"
             >
-              Signup
+              Login
             </Button>
           </form>
         </div>

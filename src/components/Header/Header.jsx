@@ -6,6 +6,8 @@ import { Button, Logo, Logout } from "../index";
 function Header() {
   const navigate = useNavigate();
   const authStatus = useSelector((state) => state.auth.status);
+  console.log(authStatus);
+
   const navItems = [
     {
       name: "Home",
@@ -57,8 +59,9 @@ function Header() {
           })}
         </ul>
       </div>
+
       <div className="flex flex-col justify-center mr-5">
-        <Logout />
+        {authStatus ? <Logout /> : null}
       </div>
     </nav>
   );
