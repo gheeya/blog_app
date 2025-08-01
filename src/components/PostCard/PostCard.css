@@ -1,0 +1,31 @@
+.main-post-container {
+  display: grid;
+  grid-template-rows: 4fr 2fr;
+  height: 230px;
+  width: 200px;
+}
+
+.post-image-container {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-image {
+  height: 180px;
+  width: 180px;
+}
+
+.post-title-container {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

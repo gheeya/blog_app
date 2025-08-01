@@ -135,9 +135,11 @@ class DbServices {
     }
   }
 
+  // TOPIC The getFilePreview requires cropping and editing which are not supported in the appwrite free plan
+  // Using getFileView instead, as it requires no such thing
   previewFile(fileId) {
     try {
-      const fileLink = this.storage.getFilePreview(
+      const fileLink = this.storage.getFileView(
         config.appwriteBucketId,
         fileId
       );
