@@ -10,6 +10,7 @@ import Select from "./Select/Select";
 import PostCard from "./PostCard/PostCard";
 import PostForm from "./PostForm/PostForm";
 import TextEditor from "./TextEditor/TextEditor";
+import AuthLayout from "./AuthLayout/AuthLayout";
 
 export {
   Header,
@@ -24,4 +25,5 @@ export {
   PostCard,
   PostForm,
   TextEditor,
+  AuthLayout,
 };
