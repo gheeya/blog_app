@@ -1,0 +1,23 @@
+.post-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.heading-container {
+  position: relative;
+}
+
+.title-container {
+  position: absolute;
+  z-index: 1000;
+  font-weight: bolder;
+  color: white;
+  text-align: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.body-container {
+  display: grid;
+  grid-template-rows: 9fr 1fr;
+}

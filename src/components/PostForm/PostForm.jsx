@@ -47,13 +47,15 @@ function PostForm({ post }) {
 
   const postData = async (data) => {
     try {
+      console.log(data, post);
       if (post) {
+        console.log(post);
         // Upload file
         const file = await DbServices.uploadFile(data?.featuredImage[0]);
         // Delete file
-        if (file) {
-          await DbServices.deleteFile(post?.slug);
-        }
+        // if (file) {
+        //   await DbServices.deleteFile(post?.featuredImage);
+        // }
         // update post
         const dbPost = await DbServices.updatePost(data?.slug, {
           ...data,
@@ -137,12 +139,12 @@ function PostForm({ post }) {
                 control={control}
                 label="Content: "
                 name="content"
-                defaultValue=""
+                defaultValue={post?.content}
               />
               <Button
                 type="submit"
                 className="bg-green-700 text-white mt-4 mx-3"
-                children="Create Post"
+                children={post ? `Edit Post` : `Create Post`}
               />
             </div>
           </form>
