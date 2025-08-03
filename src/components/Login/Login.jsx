@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/authSlice";
 import AuthServices from "../../appwrite/auth";
+import DbServices from "../../appwrite/db";
 import { Input, Button } from "../index";
+import { setPosts } from "../../store/postSlice";
 
 function Login() {
   const [error, setError] = useState(null);
@@ -25,7 +27,13 @@ function Login() {
         const userData = await AuthServices.getCurrentUserInfo();
         if (userData) {
           dispatch(login(userData));
-          navigate("/");
+          const allPosts = await DbServices.getPosts(userData.$id, "active");
+          if (allPosts) {
+            // dispatch(clearPosts());
+            console.log("1. User's posts", allPosts.documents);
+            dispatch(setPosts(allPosts.documents));
+            navigate("/");
+          }
         }
       }
     } catch (error) {

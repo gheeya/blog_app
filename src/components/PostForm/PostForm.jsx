@@ -47,7 +47,7 @@ function PostForm({ post }) {
 
   const postData = async (data) => {
     try {
-      console.log(data, post);
+      // console.log(data, post);
       if (post) {
         console.log(post);
         // Upload file
@@ -74,11 +74,11 @@ function PostForm({ post }) {
         const file = await DbServices.uploadFile(data.featuredImage[0]);
         // Create Post
         if (file) {
-          console.log({
-            ...data,
-            featuredImage: file.$id,
-            userId: userData.$id,
-          });
+          // console.log({
+          //   ...data,
+          //   featuredImage: file.$id,
+          //   userId: userData.$id,
+          // });
           const dbPost = await DbServices.createPost({
             ...data,
             featuredImage: file.$id,

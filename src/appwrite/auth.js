@@ -22,7 +22,7 @@ class AuthServices {
       );
       if (account) {
         // log user in
-        const session = await this.login(email, password);
+        const session = await this.login({ email, password });
         if (session) {
           return session;
         }

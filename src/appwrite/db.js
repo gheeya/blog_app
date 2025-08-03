@@ -94,7 +94,21 @@ class DbServices {
     }
   }
 
-  async getPosts(queries = [Query.equal("status", "active")]) {
+  async getPosts(userId, status) {
+    try {
+      const documents = await this.databases.listDocuments(
+        config.appwriteDatabaseId,
+        config.appwriteCollectionId,
+        [Query.equal("userId", userId), Query.equal("status", status)]
+      );
+      return documents;
+    } catch (error) {
+      console.log(error.message);
+      throw error;
+    }
+  }
+
+  async getAllPosts(queries = [Query.equal("status", "active")]) {
     try {
       const documents = await this.databases.listDocuments(
         config.appwriteDatabaseId,

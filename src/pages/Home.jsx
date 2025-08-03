@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import DbServices from "../appwrite/db.js";
 import { PostCard } from "../components";
+// import { useSelector } from "react-redux";
 
 function Home() {
+  // TOPIC Home should contain all posts
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    DbServices.getPosts()
+    DbServices.getAllPosts()
       .then((data) => {
         if (data) {
           setPosts(data.documents);
@@ -16,6 +18,8 @@ function Home() {
       });
   }, []);
 
+  // MODIFIED
+  // const posts = useSelector((state) => state.posts);
   if (posts.length === 0) {
     return <h1>Please login to see all the posts</h1>;
   }
