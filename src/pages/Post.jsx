@@ -6,10 +6,13 @@ import { useSelector } from "react-redux";
 import "./Post.css";
 import parse from "html-react-parser";
 import { Button } from "../components/index.js";
+import { useDispatch } from "react-redux";
+import { deletePost as del } from "../store/postSlice.js";
 
 function Post() {
   const params = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   let slug = params?.slug;
   const [post, setPost] = useState("");
 
@@ -32,6 +35,7 @@ function Post() {
       if (res) {
         const msg = await DbServices.deleteFile(post.featuredImage);
         if (msg) {
+          dispatch(del(post.slug));
           navigate("/");
         }
       }

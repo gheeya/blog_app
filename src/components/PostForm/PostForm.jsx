@@ -6,11 +6,14 @@ import { TextEditor } from "../index";
 import { useSelector } from "react-redux";
 import DbServices from "../../appwrite/db.js";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addPost, editPost } from "../../store/postSlice.js";
 
 function PostForm({ post }) {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
+  const dispatch = useDispatch();
   const {
     setValue,
     register,
@@ -57,13 +60,23 @@ function PostForm({ post }) {
         //   await DbServices.deleteFile(post?.featuredImage);
         // }
         // update post
-        const dbPost = await DbServices.updatePost(data?.slug, {
+        const dbPost = await DbServices.updatePost(post?.slug, {
           ...data,
           featuredImage: file.$id,
           userId: userData.$id,
         });
         // redirect
         if (dbPost) {
+          dispatch(
+            editPost([
+              post?.slug,
+              {
+                ...data,
+                featuredImage: file.$id,
+                userId: userData.$id,
+              },
+            ])
+          );
           navigate(`/post/${data?.slug}`);
         }
 
@@ -85,6 +98,14 @@ function PostForm({ post }) {
             userId: userData.$id,
           });
           if (dbPost) {
+            // Add to post as well
+            dispatch(
+              addPost({
+                ...data,
+                featuredImage: file.$id,
+                userId: userData.$id,
+              })
+            );
             // Redirect to post
             navigate(`/post/${data.slug}`);
           }
@@ -93,7 +114,7 @@ function PostForm({ post }) {
     } catch (error) {
       setError(error.message);
     }
-    console.log(data);
+    // console.log(data);
   };
   return (
     <div className="w-full h-full flex flex-row justify-center items-center">

@@ -37,7 +37,7 @@ export const postSlice = createSlice({
       });
     },
     deletePost(state, action) {
-      return state.filter((post) => post.slug === action.payload);
+      return state.filter((post) => post.slug !== action.payload);
     },
   },
 });

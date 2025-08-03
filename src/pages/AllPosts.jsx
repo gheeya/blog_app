@@ -18,6 +18,7 @@ function AllPosts() {
 
   // MODIFIED
   const posts = useSelector((state) => state.posts);
+  console.log(posts[0].slug);
 
   return posts.length === 0 ? null : (
     <div className="w-full h-full flex flex-row justify-start items-start px-4 py-2">

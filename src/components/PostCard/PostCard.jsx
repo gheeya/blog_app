@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import DbServices from "../../appwrite/db.js";
 import "./PostCard.css";
 
-function PostCard({ $id, title, featuredImage }) {
+function PostCard({ slug, title, featuredImage }) {
+  console.log("This is the id", slug);
   return (
     <div className="shadow-lg main-post-container">
-      <Link to={`/post/${$id}`} className="w-full h-full">
+      <Link to={`/post/${slug}`} className="w-full h-full">
         <div className="post-image-container">
           <img
             className="post-image"
